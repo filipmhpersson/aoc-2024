@@ -1,11 +1,13 @@
 const std = @import("std");
 const day1 = @import("day1/historian.zig");
+const day2 = @import("day2/reports.zig");
 
 pub fn main() anyerror!void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
     std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
 
     try day1.runDayOne();
+    try day2.runDay2();
     // stdout is for the actual output of your application, for example if you
     // are implementing gzip, then only the compressed bytes should be sent to
     // stdout, not any debugging messages.
