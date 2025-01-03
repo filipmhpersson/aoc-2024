@@ -25,7 +25,6 @@ pub fn findSafeRepotsWithDampener(input: []const u8) anyerror!usize {
         var ints = std.mem.splitAny(u8, row, " ");
         var errors: usize = 0;
         var direction: Direction = Direction.Unknown;
-        std.debug.print(" Starting row {s}\n", .{row});
         while (ints.next()) |number| {
             if (ints.buffer.len < 5) {
                 break;
@@ -35,7 +34,6 @@ pub fn findSafeRepotsWithDampener(input: []const u8) anyerror!usize {
                 if (errors > 1) {
                     break;
                 } else {
-                    std.debug.print("Safe row end{s}\n", .{row});
                     safe += 1;
                     break;
                 }
@@ -77,7 +75,6 @@ pub fn findSafeRepots(input: []const u8) anyerror!usize {
     while (rows.next()) |row| {
         var ints = std.mem.splitAny(u8, row, " ");
         var direction: Direction = Direction.Unknown;
-        std.debug.print(" Starting row {s}\n", .{row});
         while (ints.next()) |number| {
             if (ints.buffer.len < 5) {
                 break;

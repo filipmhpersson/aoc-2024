@@ -10,6 +10,9 @@ pub fn main() anyerror!void {
     //try day1.runDayOne();
     try day2.runDay2();
     try day6.runDay2();
+    try day3.runDay3();
+    try day4.runDay4();
+    try day5.runDay5();
     // stdout is for the actual output of your application, for example if you
     // are implementing gzip, then only the compressed bytes should be sent to
     // stdout, not any debugging messages.
