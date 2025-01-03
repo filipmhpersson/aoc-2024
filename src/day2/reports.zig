@@ -18,11 +18,11 @@ pub fn runDay2() anyerror!void {
 }
 
 pub fn findSafeRepotsWithDampener(input: []const u8) anyerror!usize {
-    var rows = std.mem.split(u8, input, "\n");
+    var rows = std.mem.splitAny(u8, input, "\n");
 
     var safe: usize = 0;
     while (rows.next()) |row| {
-        var ints = std.mem.split(u8, row, " ");
+        var ints = std.mem.splitAny(u8, row, " ");
         var errors: usize = 0;
         var direction: Direction = Direction.Unknown;
         std.debug.print(" Starting row {s}\n", .{row});
@@ -62,7 +62,6 @@ pub fn findSafeRepotsWithDampener(input: []const u8) anyerror!usize {
                 Direction.Unknown => unreachable,
             };
             if (speed > 3) {
-                std.debug.print("Row fail: TOO HIGH SPEED {s}\n", .{row});
                 errors += 1;
                 continue;
             }
@@ -72,11 +71,11 @@ pub fn findSafeRepotsWithDampener(input: []const u8) anyerror!usize {
 }
 
 pub fn findSafeRepots(input: []const u8) anyerror!usize {
-    var rows = std.mem.split(u8, input, "\n");
+    var rows = std.mem.splitAny(u8, input, "\n");
 
     var safe: usize = 0;
     while (rows.next()) |row| {
-        var ints = std.mem.split(u8, row, " ");
+        var ints = std.mem.splitAny(u8, row, " ");
         var direction: Direction = Direction.Unknown;
         std.debug.print(" Starting row {s}\n", .{row});
         while (ints.next()) |number| {
@@ -85,13 +84,11 @@ pub fn findSafeRepots(input: []const u8) anyerror!usize {
             }
             const curr = try std.fmt.parseInt(usize, number, 10);
             const nextNumber = ints.peek() orelse {
-                std.debug.print("Safe row end{s}\n", .{row});
                 safe += 1;
                 break;
             };
             const next = try std.fmt.parseInt(usize, nextNumber, 10);
             if (curr == next) {
-                std.debug.print("Row fail: SAME NUMBER {s}\n", .{row});
                 break;
             }
 
@@ -101,7 +98,6 @@ pub fn findSafeRepots(input: []const u8) anyerror!usize {
             }
 
             if (currDirection != direction) {
-                std.debug.print("Row fail: CHANGE DIRECTION {s}\n", .{row});
                 break;
             }
 
@@ -111,7 +107,6 @@ pub fn findSafeRepots(input: []const u8) anyerror!usize {
                 Direction.Unknown => unreachable,
             };
             if (speed > 3) {
-                std.debug.print("Row fail: TOO HIGH SPEED {s}\n", .{row});
                 break;
             }
         }

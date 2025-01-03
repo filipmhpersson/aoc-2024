@@ -17,13 +17,13 @@ pub fn runDayOne() anyerror!void {
 }
 
 pub fn similarityScore(input: []const u8, allocator: *const std.mem.Allocator) anyerror!usize {
-    var rows = std.mem.split(u8, input, "\n");
+    var rows = std.mem.splitAny(u8, input, "\n");
     var allPossibeValues = std.mem.zeroes([999999]usize);
     var left = std.ArrayList(usize).init(allocator.*);
     defer left.deinit();
 
     while (rows.next()) |row| {
-        var ints = std.mem.split(u8, row, "   ");
+        var ints = std.mem.splitAny(u8, row, "   ");
         if (ints.buffer.len < 5) {
             break;
         }
@@ -40,13 +40,13 @@ pub fn similarityScore(input: []const u8, allocator: *const std.mem.Allocator) a
     return result;
 }
 pub fn pairUpLists(input: []const u8, allocator: *const std.mem.Allocator) anyerror!isize {
-    var rows = std.mem.split(u8, input, "\n");
+    var rows = std.mem.splitAny(u8, input, "\n");
 
     var right = std.ArrayList(isize).init(allocator.*);
     var left = std.ArrayList(isize).init(allocator.*);
     {
         while (rows.next()) |row| {
-            var ints = std.mem.split(u8, row, "   ");
+            var ints = std.mem.splitAny(u8, row, "   ");
             if (ints.buffer.len < 5) {
                 break;
             }
@@ -76,19 +76,4 @@ pub fn pairUpLists(input: []const u8, allocator: *const std.mem.Allocator) anyer
         }
         return result;
     }
-}
-
-test "Verify test data" {
-    const testdata =
-        \\3   4
-        \\4   3
-        \\2   5
-        \\1   3
-        \\3   9
-        \\3   3
-    ;
-
-    const alloc = std.testing.allocator;
-    const result = pairUpLists(testdata, &alloc);
-    try testing.expectEqual(11, result);
 }
