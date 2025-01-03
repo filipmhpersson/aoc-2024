@@ -1,6 +1,9 @@
 const std = @import("std");
 const day1 = @import("day1/historian.zig");
 const day2 = @import("day2/reports.zig");
+const day3 = @import("day3/mul.zig");
+const day4 = @import("day4/guards.zig");
+const day5 = @import("day5/guards.zig");
 const day6 = @import("day6/guards.zig");
 
 pub fn main() anyerror!void {

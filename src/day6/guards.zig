@@ -4,7 +4,7 @@ const sort = std.mem.sort;
 const assert = std.debug.assert;
 const stdout = std.io.getStdOut().writer();
 
-pub fn runDay2() anyerror!void {
+pub fn runDay6() anyerror!void {
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
     var file = try std.fs.cwd().openFile("./src/day6/data", .{});
