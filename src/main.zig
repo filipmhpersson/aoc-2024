@@ -2,8 +2,8 @@ const std = @import("std");
 const day1 = @import("day1/historian.zig");
 const day2 = @import("day2/reports.zig");
 const day3 = @import("day3/mul.zig");
-const day4 = @import("day4/guards.zig");
-const day5 = @import("day5/guards.zig");
+const day4 = @import("day4/xmas.zig");
+const day5 = @import("day5/codes.zig");
 const day6 = @import("day6/guards.zig");
 
 pub fn main() anyerror!void {
@@ -12,7 +12,7 @@ pub fn main() anyerror!void {
 
     //try day1.runDayOne();
     try day2.runDay2();
-    try day6.runDay2();
+    try day6.runDay6();
     try day3.runDay3();
     try day4.runDay4();
     try day5.runDay5();
